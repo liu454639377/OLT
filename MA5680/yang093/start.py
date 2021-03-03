@@ -8,14 +8,17 @@ from OLT import OLT
 from CAT import CAT
 from batAddCat import batAddCat
 
-dev_info = {
-    'device_type' : 'huawei_olt',
-    'host' : '81.71.27.13',
-    'port' : '25048',
-    'username' : 'huawei',
-    'password' : 'huawei123',
-    'secret' : '',
-}
+def txtSwitchDict(filename):
+    with open("./"+filename, 'rb') as f:
+        lines= f.readlines()
+        tmp= {}
+        for l in lines:
+            x=l.decode("utf-8").split(":")
+            init = {x[0].strip():str(x[1].strip())}
+            tmp.update(init)
+    return tmp
+
+dev_info = txtSwitchDict("cat/dev.conf")
 	
 
 
