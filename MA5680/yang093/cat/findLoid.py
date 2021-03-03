@@ -56,15 +56,13 @@ if __name__ == '__main__':
         executeCommand(conn,commands)
         if os.path.exists('./loid.txt'):
             os.remove('./loid.txt')
-        for k in range(8):
-            olt['port']= str(k)
-            for i in range(128):
-                ont['ontid'] = str(i)
-                with open ("loid.txt","a+") as f :
-                    loid = findONTisonline(conn,olt,i)
-                    print(loid)
-                    if len(loid) > 10:
-                        f.write(loid+'\n')
+        for i in range(128):
+            ont['ontid'] = str(i)
+            with open ("loid.txt","a+") as f :
+                loid = findONTisonline(conn,olt,i)
+                print(loid)
+                if len(loid) > 10:
+                    f.write(loid+'\n')
         conn.disconnect()
 
 
