@@ -1,5 +1,0 @@
-gpon : 0
-port : 0
-upvlan : 170
-ont_line : 12
-ont_srv : 11 

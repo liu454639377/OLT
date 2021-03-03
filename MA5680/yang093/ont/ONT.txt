@@ -1,8 +1,0 @@
-sn : xxxxxxxxxx
-ontid : 0 
-ip : x.x.x.x
-loid : xxxxxxxxxx
-type :  ont
-username : root
-ont_config : ont_config.txt
-password : mduadmin

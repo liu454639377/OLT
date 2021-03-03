@@ -1,6 +1,0 @@
-device_type : huawei_olt
-host : xxxx
-port : 25036
-username : huawei
-password : xxxx
-secret : enable
