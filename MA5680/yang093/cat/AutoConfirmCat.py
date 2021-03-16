@@ -87,7 +87,6 @@ if __name__ == '__main__':
         commands= ['idle-timeout 200','scroll 512','config']
         ont_command(conn,commands)
         if not getOLTinfo(conn,olt,ont) :
-            ont['sn'] = input("请输入sn码：")
             if not find_ont_by_sn(conn,olt,ont):
                 print("输入错误sn码！")
                 conn.disconnect()

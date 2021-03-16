@@ -42,7 +42,7 @@ def getONTbySN(conn,olt,ont):
     olt['gpon'] = result.split('\n')[1].split(":")[1].split('/')[1]
     olt['port'] = result.split('\n')[1].split(":")[1].split('/')[2]
     ont['ontid'] = result.split('\n')[2].split(':')[1].split(' ')[1]
-    return
+    return True
 #通过IP查出找ONT
 def getONTbyIP(conn,olt,ont):
     for ip in IP(olt['network']):
@@ -101,8 +101,10 @@ if __name__ == '__main__':
         commands = ['idle-timeout 200','scroll 512','config',]
         executeCommand(conn,commands)
         if not getONTbyAuto():
-            ont['sn'] = input("没有查找到ont,请输入sn码：")
-            getONTbySN(conn,olt,ont) 
+            if not getONTbySN(conn,olt,ont) :
+                conn.disconnect()
+                time.sleep(3)
+                sys.exit(0)
             deleONT(conn,olt,ont)
         getONTbyIP(conn,olt,ont)
         addONT(conn,olt,ont)
