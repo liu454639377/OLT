@@ -2,9 +2,13 @@ pipeline {
     agent none
     stages {
 
-        stage('clean workspace'){
-            sh 'rm -rf $WORKSPACE/*'
-        }
+        // stage('clean workspace'){
+        //     agent none
+        //     steps{
+        //         sh 'rm -rf $WORKSPACE/*'
+        //     }
+            
+        // }
         stage('Build') {
 
             agent {
