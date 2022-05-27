@@ -18,7 +18,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'pip install -i https://pypi.douban.com/simple pytest'
+                sh 'pip install -i https://pypi.douban.com/simple   pytest'
                 sh 'python -m pytest --verbose --junit-xml test-reports/results.xml MA5680/cat/AutoConfirmCat.py MA5680/cat/findLoid.py MA5680/cat/deleportcat.py'
             }
             post {
