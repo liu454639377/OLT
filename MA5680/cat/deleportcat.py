@@ -21,7 +21,7 @@ def txtSwitchDict(filename):
 
 dev_info = txtSwitchDict('dev.conf')
 olt = txtSwitchDict('OLT.conf')
-ont = txtSwitchDict('ONT.conf')
+ont = txtSwitchDict('CAT.conf')
 
 
 #批量执行命令

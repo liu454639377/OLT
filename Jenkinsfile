@@ -8,17 +8,18 @@ pipeline {
                 }
             }
             steps {
-                sh 'python3 -m py_compile MA5680/cat/AutoConfirmCat.py MA5680/cat/findLoid.py MA5680/cat/deleportcat.py'
+                sh 'python -m py_compile  MA5680/cat/deleportcat.py MA5680/cat/findLoid.py MA5680/cat/AutoConfirmCat.py'
             }
         }
         stage('Test') {
             agent {
                 docker {
-                    image 'qnib/pytest'
+                    image 'python:3-alpine'
                 }
             }
             steps {
-                sh 'py.test --verbose --junit-xml test-reports/results.xml MA5680/cat/AutoConfirmCat.py MA5680/cat/findLoid.py MA5680/cat/deleportcat.py'
+                sh 'pip install -i https://pypi.douba.com pytest'
+                sh 'python -m pytest --verbose --junit-xml test-reports/results.xml MA5680/cat/AutoConfirmCat.py MA5680/cat/findLoid.py MA5680/cat/deleportcat.py'
             }
             post {
                 always {
