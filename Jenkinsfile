@@ -24,12 +24,11 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image 'python:3-alpine'
+                    image 'devtestdemisto/netmiko:1.0.0.24037-e74ad3d315bbe6837b8870052fd708ce'
                 }
             }
             steps {
                 sh 'pip install -i https://pypi.douban.com/simple   pytest '
-                sh 'pip install -i https://pypi.douban.com/simple   netmiko '
                 sh 'cd MA5680/cat/ && python -m pytest --verbose --junit-xml test-reports/results.xml AutoConfirmCat.py findLoid.py deleportcat.py'
             }
             post {
